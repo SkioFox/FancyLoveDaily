@@ -60,9 +60,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed, getCurrentInstance } from 'vue'
-import HVideo from '@src/component/video.vue'
-import HForm from '@src/component/form.vue'
-import HFormlist from '@src/component/formlist.vue'
+// import HVideo from '@src/component/video.vue'
+// import HForm from '@src/component/form.vue'
+// import HFormlist from '@src/component/formlist.vue'
 import { showToast } from '@src/utils'
 import { GlobalData } from '@src/types'
 

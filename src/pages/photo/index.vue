@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import HSwiper from '@src/component/swiper.vue'
+// import HSwiper from '@src/component/swiper.vue'
 import { onHide, onShow } from '@dcloudio/uni-app'
 const list = ref([])
 const isGif = ref(false)
