@@ -1,18 +1,8 @@
-
-# Editor directories and files
+/node_modules/
+/dist/
+/.idea
 .idea
-# .vscode
-
-# Package Manager
-node_modules
-.pnpm-debug.log*
-
-# System
-.DS_Store
-
-# Bundle
-dist
-dist-ssr
-*.local
-yarn-error.log
-.eslintcache
+/cloud/functions/wxShare/node_modules/
+/cloud/functions/user/node_modules/
+/cloud/functions/msgCheck/node_modules/
+/cloud/functions/getQrcode/node_modules/
