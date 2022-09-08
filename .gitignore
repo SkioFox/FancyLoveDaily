@@ -1,18 +1,13 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Editor directories and files
 .idea
-# .vscode
-
-# Package Manager
-node_modules
-.pnpm-debug.log*
-
-# System
-.DS_Store
-
-# Bundle
-dist
-dist-ssr
-*.local
-yarn-error.log
-.eslintcache
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
