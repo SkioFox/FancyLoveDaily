@@ -1,60 +1,106 @@
-# wedding-invitation
+# 项目介绍
 
-目前已更新为 uniapp + vue3 + ts + vite 技术栈。Mpvue vue2 版本请看另外一个分支。
+来了来了，他来了，整套婚礼结婚用的项目来了，前端程序员的福利项目
 
-> 微信小程序开发的电子请帖。从码云[wedding](https://gitee.com/roberthuang123/wedding)项目 Fork 而来，感谢原作者[roberthuang123](https://gitee.com/roberthuang123)贡献分享。我在此基础上修改了一些细节，具体如下：
+基于云函数的原生微信小程序
 
-- 增加留言板删除功能，指定某个 openid 可以删除。
-- 修改 audio 标签为 innerAudioContext。
-- 电话号码和视频都存云数据库请求而来。
-- 留言板出席电话简单隐藏。
-- 修改我要出席逻辑，已经填过出席的再次填是修改之前填的。
-- 增加 CSS 动画效果。
-- 改为 uniapp + vue3 + ts + vite 技术栈。
+基于VUE的H5抽奖+弹幕
 
-以上贡献出来，希望帮助有缘人^\_^
+基于nest框架的node后端,配合H5使用
 
-## 体验
+具体内容可具体见各个项目下的README文档
 
-![小程序二维码](./ma.jpg)
+## 云函数现在改成免费1个月，后面收费了，给为量力而行吧，不愧是TX。
+会在22年底完成API重构吧。（说不准会🕊）
+提供两个版本吧。
+一个nestjs写的独立后台版本替代云函数。
+一个是原来的。
 
-## 说明
+## 难度说明（根据各自能力选择适合自己的就好，难度高适合横向提高自己能力）
 
-大家不要直接跑本项目，需要开通云开发，现做简要说明，不懂可以发邮件问我。
+**入门※**：直接使用wedding-weapp，创建自己的婚礼小程序，难度最低
 
-1. 用你喜欢的 ide 打开项目。将 `manifest.json` 中 `mp-weixin` 节点的 `appid` 改为你的小程序 id。
-2. `.env` 中用 `VITE_VUE_WECHAT_ENV` 赋值云开发环境。
-3. 运行 `pnpm dev:mp-weixin` 成功后， 微信开发者工具导入项目 `/dist/mp-weixin`。
-4. 开通云开发，设置环境名称，选 支持按量付费中 `基础版 1`，免费的，基本够用了。
+**进阶※※※**：在入门的基础上，额外增加weeding-nest-server+wedding-lucky-h5，在小程序的基础上，额外扩展了婚礼现场H5弹幕+抽奖功能，只需要用本地开发环境将前后端跑起来即可使用
 
-5. 云开发控制台云函数中上传并部署云函数。
+**终级※※※※※**:在进阶的基础上，把前后端项目打包，将项目部署在服务器上（选配购买云服务器+域名），需要一定的linux和nginx基础,附我自己云服务器的nginx配置
 
-- 微信开发者工具中找到 static/functions 目录。
-- functions 上右键指定当前环境，然后同步云函数列表。
-- functions 中每个文件夹上右键选择 `上传并部署`
+## nginx配置参考（搭配终极）
+```nginx
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
 
-![云函数](./云函数.png)
+user root;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
 
-6. 把你要用到的音乐、图片、视频资源放到 `/data/存储/`下面的文件夹中。
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
 
-7. 云开发控制台存储中上传这些文件夹。
+events {
+    worker_connections 1024;
+}
+http {
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+    '$status $body_bytes_sent "$http_referer" '
+    '"$http_user_agent" "$http_x_forwarded_for"';
 
-![存储](./存储.png)
+    access_log /var/log/nginx/access.log main;
 
-8. 云开发控制台数据库中新建集合 `banner`, `common`, `indexBanner`, `message`, `music`,`present`,`user`。**注意**集合的数据权限要设置为`所有用户可读，仅创建者可读写`。
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
 
-9. 编辑 `/data/数据库/` 中 `banner`(首页轮播图), `common`(位置、电话等配置), `indexBanner`(第二页轮播图), `music`(背景音乐路径) 指示的路径，url 改成你想要展示的，具体从存储里面读取。
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
 
-10. 将`/data/数据库/`中的 json 文件对应导入到步骤 8 建的集合中。
+    gzip on;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    #gzip_http_version 1.0;
+    gzip_comp_level 2;
+    gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+    gzip_vary off;
+    gzip_disable "MSIE [1-6]\.";
 
-![数据库](./数据库.png)
 
-最后预览
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
 
-![预览](./预览.png)
+    server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name www.xtybusiness.cn;
+        root /usr/share/nginx/html;
 
-上手前可以先熟悉云开发文档结合原作者的掘金文章[项目讲解](https://juejin.im/post/5c341e1d6fb9a049f66c4876)一起使用。
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
 
-## 其他
+        location /api/ {
+            proxy_pass http://127.0.0.1:3000/; # 转发规则
+            proxy_set_header Host $proxy_host; # 修改转发请求头，让8080端口的应用可以受到真实的请求
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
 
-其他问题请查看 uniapp 官方文档。
+        location /wedding {
+            alias /root/workspace/wedding-fullstack/wedding-lucky-h5/dist;
+            index index.html;
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+    }
+}
+
+```

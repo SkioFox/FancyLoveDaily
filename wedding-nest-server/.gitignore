@@ -1,9 +1,6 @@
 # compiled output
-**/dist
-.DS_Store
-**/node_modules
-**/weapp-screct-key.*
-wedding-nest-server/dist/**
+/dist
+/node_modules
 
 # Logs
 logs
