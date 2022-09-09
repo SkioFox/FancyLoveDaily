@@ -68,7 +68,8 @@
     justify-content: space-around;
     width: 100%;
     box-sizing: border-box;
-    padding: 15rpx 0rpx 55rpx 0rpx;
+    /* padding: 15rpx 0rpx 55rpx 0rpx; */
+    padding: 12rpx 0;
     background-color: #f8f8f8;
     border-top: #cfcfcf 1px solid;
     .tabbar-item {
@@ -77,11 +78,11 @@
       justify-content: space-between;
       align-items: center;
       .icon {
-        width: 28px;
-        height: 28px;
+        width: 50rpx;
+        height:50rpx;
       }
       .title {
-        font-size: 10px;
+        font-size: 16rpx;
       }
     }
   }
