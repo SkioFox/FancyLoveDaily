@@ -2,12 +2,14 @@
   <div class="photo">
     <image class="bg-image" :src="background" />
     <h-swiper :list="list" :isGif="isGif" :autoplay="autoplay"></h-swiper>
+    <w-tabbar :currentPage="1"></w-tabbar>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import HSwiper from '@src/component/swiper.vue'
+import wTabbar from '@src/component/w-tabbar.vue'
 import { onHide, onShow } from '@dcloudio/uni-app'
 const list = ref([])
 const isGif = ref(false)

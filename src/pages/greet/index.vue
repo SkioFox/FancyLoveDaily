@@ -12,12 +12,14 @@
       <button class="left" lang="zh_CN" open-type="getUserInfo" @getuserinfo="sendGreet">送上祝福</button>
       <button class="right" open-type="share">分享喜悦</button>
     </div>
+    <w-tabbar :currentPage="3"></w-tabbar>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { showToast } from '@src/utils'
 import { onMounted, ref } from 'vue'
+import wTabbar from '@src/component/w-tabbar.vue'
 
 const userList = ref([])
 const openId = ref('')

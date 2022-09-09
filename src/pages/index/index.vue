@@ -12,12 +12,14 @@
       <image src="../../static/images/music_icon.png" class="musicImg" />
       <image src="../../static/images/music_play.png" class="music_play playImg" />
     </div>
+    <w-tabbar :currentPage="0"></w-tabbar>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, getCurrentInstance } from 'vue'
 import IndexSwiper from '@src/component/index-swiper.vue'
+import wTabbar from '@src/component/w-tabbar.vue'
 import { onHide, onLoad, onShareAppMessage, onShow, onUnload } from '@dcloudio/uni-app'
 import { GlobalData } from '@src/types'
 import { showToast } from '@src/utils'

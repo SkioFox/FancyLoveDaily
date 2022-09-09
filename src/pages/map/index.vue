@@ -22,11 +22,12 @@
       </div>
     </div>
     <image class="footer" src="../../static/images/grren-flower-line.png" />
+    <w-tabbar :currentPage="2"></w-tabbar>
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-
+import wTabbar from '@src/component/w-tabbar.vue'
 const markers = ref([
   {
     iconPath: '../../static/images/nav.png',

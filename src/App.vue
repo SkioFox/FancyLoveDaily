@@ -7,6 +7,7 @@ onLaunch(() => {
 })
 onShow(() => {
   console.log('App Show')
+  uni.hideTabBar();
 })
 onHide(() => {
   console.log('App Hide')
@@ -27,7 +28,7 @@ uni.getSystemInfo({
     const custom = uni.getMenuButtonBoundingClientRect()
     instance.appContext.config.globalProperties.$Custom = custom
     instance.appContext.config.globalProperties.$CustomBar = custom.bottom + custom.top - e.statusBarHeight!
-
+    
     // #endif
     // #ifdef MP-ALIPAY
     instance.appContext.config.globalProperties.$StatusBar = e.statusBarHeight

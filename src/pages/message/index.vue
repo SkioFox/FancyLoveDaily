@@ -55,6 +55,7 @@
     <div class="form-list" v-show="isFormlist">
       <h-formlist @closeFormlist="closeFormlist" :formList="formList"></h-formlist>
     </div>
+    <w-tabbar :currentPage="4"></w-tabbar>
   </div>
 </template>
 
@@ -63,6 +64,7 @@ import { onMounted, ref, computed, getCurrentInstance } from 'vue'
 import HVideo from '@src/component/video.vue'
 import HForm from '@src/component/form.vue'
 import HFormlist from '@src/component/formlist.vue'
+import wTabbar from '@src/component/w-tabbar.vue'
 import { showToast } from '@src/utils'
 import { GlobalData } from '@src/types'
 
