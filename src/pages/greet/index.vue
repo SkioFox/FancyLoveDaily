@@ -142,9 +142,6 @@ const getUserList = () => {
   }
   .bottom {
     height: 140rpx;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     background: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: center;
@@ -171,10 +168,8 @@ const getUserList = () => {
   .count {
     height: 60rpx;
     line-height: 60rpx;
+    margin: 20rpx;
     background: rgba(255, 255, 255, 0.5);
-    position: fixed;
-    bottom: 140rpx;
-    left: 0;
     font-size: 28rpx;
     color: #444;
     text-align: center;

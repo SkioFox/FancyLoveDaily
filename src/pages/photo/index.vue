@@ -52,6 +52,6 @@ const getList = () => {
 
 <style lang="scss" scoped>
 .photo {
-  height: 100%;
+  height: calc(100vh - 90rpx);
 }
 </style>

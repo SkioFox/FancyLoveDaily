@@ -439,7 +439,7 @@ const getFromlist = () => {
   }
   .bottom {
     position: fixed;
-    bottom: 0;
+    bottom: 80rpx;
     left: 0;
     height: 160rpx;
     background: rgba(255, 255, 255, 0.75);
